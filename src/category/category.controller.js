@@ -34,9 +34,9 @@ export const allCategories = async (req, res) => {
 export const updateCategory = async (req, res) => {
     try {
         const { id } = req.params;
-        const { name } = req.body;
+        const { name, description } = req.body;
 
-        const updatedCategory = await Category.findByIdAndUpdate(id, { name }, { new: true });
+        const updatedCategory = await Category.findByIdAndUpdate(id, { name, description }, { new: true });
 
         if (!updatedCategory) {
             return res.status(404).send({ success: false, message: 'Category not found' });
